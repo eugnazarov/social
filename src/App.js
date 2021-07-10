@@ -1,11 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Message from "./components/message/message";
+import MessageForm from "./components/message-form/message-form";
 
 const App = () => {
-    const text = "Hello!!!"
+
+    const [messageList, setMessageList] = useState([])
+
+
     return (
         <div>
-            <Message text={text}/>
+
+            {messageList.map(msg => <Message msg={msg}/>)}
+            <MessageForm setMessageList={setMessageList}/>
         </div>
     );
 };

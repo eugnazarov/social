@@ -1,0 +1,13 @@
+.message-container{
+    width: 450px
+}
+.message-form{
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.message-form__input{
+    padding: 5px;
+}

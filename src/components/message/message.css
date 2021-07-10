@@ -8,3 +8,7 @@
 .message__text {
     color: #fff;
 }
+
+.message__author{
+    font-weight: bold;
+}

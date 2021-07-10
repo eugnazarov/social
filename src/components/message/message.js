@@ -6,7 +6,6 @@ const Message = ({msg}) => {
         <div className="message">
             <h2 className="message__author">{msg.author}</h2>
             <p className="message__text">{msg.message}</p>
-            <p>{msg.timestamp}</p>
         </div>
     );
 };

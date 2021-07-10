@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import Message from "./components/message/message";
 import MessageForm from "./components/message-form/message-form";
+import MessageList from "./components/message-list/message-list";
+import './App.css'
 
 const App = () => {
 
@@ -8,9 +9,8 @@ const App = () => {
 
 
     return (
-        <div>
-
-            {messageList.map(msg => <Message msg={msg}/>)}
+        <div className="app">
+            <MessageList messages={messageList}/>
             <MessageForm setMessageList={setMessageList}/>
         </div>
     );

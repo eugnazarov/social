@@ -1,0 +1,16 @@
+.messages-container{
+    height: 50%;
+    background: rgba(141, 217, 241, 0.3);
+    width: 100%;
+    padding: 10px;
+    overflow:auto;
+}
+
+
+
+.messages-list{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+
+}

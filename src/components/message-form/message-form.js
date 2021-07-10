@@ -20,8 +20,7 @@ const MessageForm = ({setMessageList}) => {
         event.preventDefault()
         let message = {
             author: data.author,
-            message: data.message,
-            timestamp: Date().now
+            message: data.message
         }
         if(data.message.length>0 && data.author.length>0){
             setMessageList(prevState => [...prevState, message])
@@ -40,7 +39,7 @@ const MessageForm = ({setMessageList}) => {
                 <label htmlFor="message">Message</label>
                 <input value={data.message} onChange={handleChange} id="message" className="message-form__input"
                        type="text" name="message"/>
-                <button onClick={handleSubmit}>Send</button>
+                <button className="message-form__submit" onClick={handleSubmit}>Send</button>
             </form>
         </div>
     );

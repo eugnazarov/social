@@ -22,7 +22,7 @@ const MessageForm = ({setMessageList}) => {
             author: data.author,
             message: data.message
         }
-        if(data.message.length>0 && data.author.length>0){
+        if(data.message.length && data.author.length){
             setMessageList(prevState => [...prevState, message])
             setData({author:"", message:""})
         }
@@ -32,14 +32,14 @@ const MessageForm = ({setMessageList}) => {
 
     return (
         <div className="message-container">
-            <form className="message-form">
+            <form  onSubmit={handleSubmit} className="message-form">
                 <label htmlFor="author">Your name</label>
                 <input value={data.author} onChange={handleChange} id="author" className="message-form__input"
                        type="text" name="author"/>
                 <label htmlFor="message">Message</label>
                 <input value={data.message} onChange={handleChange} id="message" className="message-form__input"
                        type="text" name="message"/>
-                <button className="message-form__submit" onClick={handleSubmit}>Send</button>
+                <button className="message-form__submit" type="submit" >Send</button>
             </form>
         </div>
     );

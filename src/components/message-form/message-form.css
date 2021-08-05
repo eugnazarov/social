@@ -1,0 +1,31 @@
+.message-container{
+    width: 450px;
+    align-self: flex-start;
+}
+.message-form{
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.message-form__input{
+    padding: 5px;
+}
+
+.message-form__submit{
+    background: none;
+    width: 15%;
+    cursor: pointer;
+    margin-top: 15px;
+    padding: 10px 8px;
+    transition: .5s all ease;
+    border: none;
+    background: grey;
+    color: #fff;
+    border-radius: 50px;
+}
+
+.message-form__submit:hover{
+    background: #3c3cff;
+}

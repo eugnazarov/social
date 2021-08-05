@@ -1,48 +1,65 @@
-import React, {useState} from 'react';
-import './message-form.css'
+import React, { useRef, useState} from 'react';
+import {makeStyles} from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import InputButton from "../ui/InputButton/InputButton";
+
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        '& .MuiTextField-root': {
+            margin: theme.spacing(1),
+            width: '65ch',
+        },
+    },
+}));
 
 const MessageForm = ({setMessageList}) => {
-
-    const [data, setData] = useState({
+    const [messageData, setMessageData] = useState({
+        content: "",
         author: "",
-        message: ""
-    })
 
-    const handleChange = event => {
-        const name = event.target.name
-        setData({
-            ...data,
-            [name]: event.target.value
-        })
-    }
+    });
+    const classes = useStyles();
+    const enableSend = !!messageData.content && !!messageData.author
+    const sendButton = <InputButton text={"send"} disabled={!enableSend}/>
+    const inputRef = useRef(null)
 
-    const handleSubmit = event => {
+    const handleChange = (event) => {
+        setMessageData({...messageData, [event.target.name]: event.target.value})
+    };
+    const handleSubmit = (event) => {
         event.preventDefault()
-        let message = {
-            author: data.author,
-            message: data.message
-        }
-        if(data.message.length && data.author.length){
-            setMessageList(prevState => [...prevState, message])
-            setData({author:"", message:""})
-        }
-
+        setMessageList(prevState => [...prevState, {...messageData, id: Math.random()*Date.now()}])
+        setMessageData({content: "", author: ""})
+        inputRef.current.focus()
 
     }
+
 
     return (
-        <div className="message-container">
-            <form  onSubmit={handleSubmit} className="message-form">
-                <label htmlFor="author">Your name</label>
-                <input value={data.author} onChange={handleChange} id="author" className="message-form__input"
-                       type="text" name="author"/>
-                <label htmlFor="message">Message</label>
-                <input value={data.message} onChange={handleChange} id="message" className="message-form__input"
-                       type="text" name="message"/>
-                <button className="message-form__submit" type="submit" >Send</button>
-            </form>
-        </div>
+        <form onSubmit={handleSubmit} className={classes.root} noValidate autoComplete="off">
+            <div>
+                <TextField
+                    id="standard"
+                    placeholder="author"
+                    autoFocus
+                    name="author"
+                    value={messageData.author}
+                    onChange={handleChange}
+
+                />
+                <TextField
+                    inputRef={inputRef}
+                    id="standard"
+                    placeholder="type your message"
+                    autoFocus
+                    name="content"
+                    value={messageData.content}
+                    onChange={handleChange}
+                    InputProps={{endAdornment: sendButton}}
+                />
+            </div>
+        </form>
     );
 };
-
-export default MessageForm;
+export default MessageForm

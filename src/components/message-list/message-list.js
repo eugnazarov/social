@@ -12,7 +12,7 @@ const MessageList = ({messages}) => {
         div.scrollIntoView({behavior: "smooth"});
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         scrollToBottom()
     }, [messages])
 
@@ -20,7 +20,7 @@ const MessageList = ({messages}) => {
         <div className="messages-container">
             <ul className="messages-list">
                 {messages.map(
-                    msg => <li><Message msg={msg}/></li>
+                    msg => <Message key={msg.id} msg={msg}/>
                 )}
             </ul>
             <div style={{float: "left", clear: "both"}}

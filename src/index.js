@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {MuiThemeProvider} from "material-ui";
 import {getMuiTheme} from "material-ui/styles";
 import {darkBlack, grey100} from "material-ui/styles/colors";
+import {BrowserRouter} from "react-router-dom";
 
 const muiTheme = getMuiTheme({
     palette: {
@@ -14,12 +15,15 @@ const muiTheme = getMuiTheme({
     }
 })
 ReactDOM.render(
-  <React.StrictMode>
-      <MuiThemeProvider muiTheme={muiTheme}>
-    <App />
-      </MuiThemeProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <MuiThemeProvider muiTheme={muiTheme}>
+            <BrowserRouter>
+                <App/>
+            </BrowserRouter>
+
+        </MuiThemeProvider>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

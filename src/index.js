@@ -7,6 +7,8 @@ import {MuiThemeProvider} from "material-ui";
 import {getMuiTheme} from "material-ui/styles";
 import {darkBlack, grey100} from "material-ui/styles/colors";
 import {BrowserRouter} from "react-router-dom";
+import {Provider} from "react-redux";
+import {store} from "./store/store";
 
 const muiTheme = getMuiTheme({
     palette: {
@@ -16,12 +18,13 @@ const muiTheme = getMuiTheme({
 })
 ReactDOM.render(
     <React.StrictMode>
-        <MuiThemeProvider muiTheme={muiTheme}>
-            <BrowserRouter>
-                <App/>
-            </BrowserRouter>
-
-        </MuiThemeProvider>
+        <Provider store={store}>
+            <MuiThemeProvider muiTheme={muiTheme}>
+                <BrowserRouter>
+                    <App/>
+                </BrowserRouter>
+            </MuiThemeProvider>
+        </Provider>
     </React.StrictMode>,
     document.getElementById('root')
 );

@@ -1,0 +1,13 @@
+.chat-list{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.left-menu{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
